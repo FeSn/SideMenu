@@ -50,7 +50,7 @@ open class UISideMenuNavigationController: UINavigationController {
     open weak var sideMenuDelegate: UISideMenuNavigationControllerDelegate?
     
     /// SideMenuManager instance associated with this menu. Default is `SideMenuManager.default`. This property cannot be changed after the menu has loaded.
-    open weak var sideMenuManager: SideMenuManager! = SideMenuManager.default {
+    open weak var sideMenuManager: SideMenuManager! = SideMenuManager.defaultManager {
         didSet {
             if locked && oldValue != nil {
                 print("SideMenu Warning: a menu's sideMenuManager property cannot be changed after it has loaded.")

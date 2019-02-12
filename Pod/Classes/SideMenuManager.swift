@@ -135,11 +135,23 @@ open class SideMenuManager: NSObject {
     open var menuAlwaysAnimate = false
     
     /// Default instance of SideMenuManager.
-    public static let `default` = SideMenuManager()
+    public static var `default`: SideMenuManager?
     
     /// Default instance of SideMenuManager (objective-C).
-    open class var defaultManager: SideMenuManager {
-        return SideMenuManager.default
+    open class var defaultManager: SideMenuManager? {
+        set {
+            SideMenuManager.default = newValue
+        }
+        get {
+            if let `default` = SideMenuManager.default {
+                return `default`
+            } else {
+                SideMenuManager.default = SideMenuManager()
+                return SideMenuManager.default!
+            }
+            
+        }
+        
     }
     
     internal var transition: SideMenuTransition!
